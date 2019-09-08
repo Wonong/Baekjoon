@@ -15,9 +15,6 @@ int main(){
     int x, y, k;
     int cmd, temp;
 
-    // diceSurface[6] = 1;
-    // diceSurface[3] = 3;
-
     scanf("%d %d %d %d %d", &n, &m, &x, &y, &k);
     for(int i=0; i<n; i++){
         for(int j=0; j<m; j++){
@@ -41,24 +38,21 @@ int main(){
         }
 
         switch(cmd-1){
-            // 동으로 이동.
-            case 0:
+            case 0: // 동으로 이동.
                 temp = diceSurface[1];
                 diceSurface[1] = diceSurface[3];
                 diceSurface[3] = diceSurface[6];
                 diceSurface[6] = diceSurface[4];
                 diceSurface[4] = temp;
             break;
-            // 서로 이동.
-            case 1:
+            case 1: // 서로 이동.
                 temp = diceSurface[1];
                 diceSurface[1] = diceSurface[4];
                 diceSurface[4] = diceSurface[6];
                 diceSurface[6] = diceSurface[3];
                 diceSurface[3] = temp;
             break;
-            // 북으로 이동.
-            case 2:
+            case 2: // 북으로 이동.
                 temp = diceSurface[2];
                 diceSurface[2] = diceSurface[6];
                 diceSurface[6] = diceSurface[5];
@@ -71,19 +65,14 @@ int main(){
                 diceSurface[1] = diceSurface[5];
                 diceSurface[5] = diceSurface[6];
                 diceSurface[6] = temp;
-                // printf("남으로 이동\n");
-                // for(int j=1; j<7; j++) printf("%d ", diceSurface[j]);
-                // printf("\n");
             break;
         }
-        // printf("pos : %d, %d / val: %d\n", x, y, boards[x][y]);
         if(boards[x][y] == 0){
             boards[x][y] = diceSurface[1];
         }else{
             
             diceSurface[1] = boards[x][y];
             boards[x][y] = 0;
-            // printf("changed Val : %d\n", diceSurface[1]);
         }
         printf("%d\n", diceSurface[6]);
     }
