@@ -59,7 +59,7 @@ int main(){
                 diceSurface[5] = diceSurface[1];
                 diceSurface[1] = temp;
             break;
-            case 3:
+            case 3: // 남으로 이동
                 temp = diceSurface[2];
                 diceSurface[2] = diceSurface[1];
                 diceSurface[1] = diceSurface[5];
