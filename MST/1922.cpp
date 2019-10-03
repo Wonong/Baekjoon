@@ -25,7 +25,7 @@ int main(){
     }
     visit[1] = 1;
     
-    while(!nodes.empty()){
+    while(!nodes.empty()){      // (V-1)번 실행
         pair<int, int> curr;
         int len;
 
@@ -38,9 +38,10 @@ int main(){
         visit[curr.second] = 1;
 
         len = edges[curr.second].size();
-        for(int i=0; i<len; i++){
-            if(visit[edges[curr.second][i].first] == 0) nodes.push(make_pair(edges[curr.second][i].second, edges[curr.second][i].first));
+        for(int i=0; i<len; i++){   // 2E번 실행
+            if(visit[edges[curr.second][i].first] == 0) nodes.push(make_pair(edges[curr.second][i].second, edges[curr.second][i].first));   // 우선순위 큐이므로, 시간복잡도 logE
         }
     }
     printf("%d\n", ans);
 }
+// 전체 시간복잡도 = (V-1) + 2E*logE --> O(ElogE) .=. O(Elogv) (V <= E <= V^2 이기 때문)
